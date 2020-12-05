@@ -59,12 +59,6 @@ function! ActiveStatusLine() abort
     " Show syntax identifier
     let l:statusline.="%2*%{SyntaxItem()}"
 
-    " Treesitter?
-    let l:statusline.="%2*%{nvim_treesitter#statusline(90)}"
-
-    " Split right
-    let l:statusline.="%5*%="
-
     " Line and column
     let l:statusline.="%2* %l:%c/%L "
 
