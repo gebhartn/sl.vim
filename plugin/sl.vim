@@ -9,6 +9,17 @@ function! SyntaxItem() abort
     endif
 endfunction
 
+" Ale linter status
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    if l:counts.total == 0
+        return ""
+    else
+        return printf(" [%d] ", l:counts.total)
+    endif
+endfunction
+
 " Readonly flag check
 function! ReadOnly() abort
     if &readonly || !&modifiable
@@ -52,6 +63,9 @@ function! ActiveStatusLine() abort
 
     " Show if file is readonly
     let l:statusline.="%2*%{ReadOnly()}"
+
+    " ALE lint errors
+    let l:statusline.="%2*%{LinterStatus()}"
 
     " Show if file has been modified
     let l:statusline.="%2*%{Modified()}"
