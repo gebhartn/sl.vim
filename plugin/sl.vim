@@ -59,6 +59,9 @@ function! ActiveStatusLine() abort
     " Show syntax identifier
     let l:statusline.="%2*%{SyntaxItem()}"
 
+    " Split right
+    let l:statusline.="%5*%="
+
     " Line and column
     let l:statusline.="%2* %l:%c/%L "
 
